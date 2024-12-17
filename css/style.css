@@ -1,106 +1,305 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* border: 1px solid; */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid; */
 }
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
-html{
+html {
   font-size: 62.5%;
 }
-header{
-    height: 0;
+header {
+  height: 0;
 }
-.mainVisual{
-    position: relative;
-    height: 1024px;
-    background-image: url(../assets/img/JEPLAN[PCbg].png);
-    background-size: cover;
+.fade-out {
+  opacity: 0;
 }
-.mainVisual__links{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    grid-template-rows: 300px 300px;
-    grid-template-columns: 300px 300px;
+.mainVisual {
+  position: relative;
+  height: 1024px;
+  background-image: url(../assets/img/bg__mainVisual.png);
+  background-size: cover;
+  overflow: hidden;
 }
-.linkButton{
-    position: relative;
+.--only-sp {
+  display: none;
+}
+.mainVisualTiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -50px;
+  height: 100%;
+  transition: opacity 1s;
+}
+.mainTile {
+  padding: 160px 0 0 150px;
+  width: 625px;
+  height: 625px;
+  background-color: #e2e897;
+  background-image: url(../assets/img/icon__arrow.png),
+    url(../assets/img/mv__mainTileFrame.png);
+  background-position: center, 54% 65%;
+  background-repeat: no-repeat;
+  background-size: 300px, 532px;
+  clip-path: path(
+    "M50 435v-233.2463c0-23.9519 12.8098-46.0799 33.6037-58.0003l200.8882-115.2221c20.7716-11.9204 46.3468-11.8091 67.0293.2891l197.8636 115.7782c20.5047 11.9869 33.0921 33.9596 33.0921 57.7111v223.8614c0 23.4181-12.2539 45.1236-32.2916 57.2218l-198.6641 119.9372c-20.5047 12.3872-46.0578 12.8543-67.0072 1.2233l-200.1099-111.1079c-21.2387-11.7868-34.4043-34.1596-34.4043-58.445Z"
+  );
+  filter: drop-shadow(0px 4px 4px 0px #a7af2ab5);
+}
+.mainTile__title {
+  font-family: Inter;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 43.54px;
+  text-shadow: 0px 4px 4px #ffffff;
+  transition: opacity 1s;
+}
+.mainTile__text {
+  font-family: Inter;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 49px;
+  text-shadow: 0px 4px 4px #ffffff;
+  transition: opacity 1s;
+}
+.mainTile__annotation {
+  font-size: 25px;
+}
+.subTileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+.subTile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  clip-path: path(
+    "M20 172v-93.2985c0-9.5807 5.1239-18.432 13.4415-23.2002l80.3553-46.0888c8.3086-4.7682 18.5387-4.7237 26.8118.1157l79.1454 46.3113c8.2018 4.7948 13.2369 13.5838 13.2369 23.0845v89.5446c0 9.3672-4.9015 18.0494-12.9166 22.8887l-79.4656 47.9749c-8.2018 4.9549-18.4231 5.1418-26.8029.4894l-80.044-44.4432c-8.4955-4.7147-13.7617-13.6638-13.7617-23.378Z"
+  );
+  background-color: #cfd936;
+}
+.subTile__title {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.03px;
+  transition: opacity 1s;
+}
+.mainVisual__links {
+  position: absolute;
+  top: -150px;
+  right: -300px;
+  display: flex;
+}
+.linkContainer {
+  margin-right: -70px;
+}
+.linkContainer:nth-of-type(1) {
+  margin-top: 465px;
+}
+.linkContainer:nth-of-type(2) {
+  margin-top: 232px;
+}
+.linkTile {
+  position: relative;
+  width: 465px;
+  height: 465px;
+  background-image: url(../assets/img/bg__linkTile.png);
+  background-size: 480px;
+  background-position: center;
+}
+.linkContainer > .link,
+.linkTile {
+  clip-path: path(
+    "m 140 20 h 185 c 20 0 30 10 40 25 l 90 155 c 10 15 10 45 0 60 l -90 155 c -10 20 -30 25 -40 25 h -185 c -20 0 -30 -10 -40 -25 l -92 -156 c -8 -14 -8 -44 0 -59 l 90 -155 c 9 -11 22 -25 42 -25 z"
+  );
+}
+.link > .linkTile {
+  background-image: url(../assets/img/icon__cloth.png),
+    url(../assets/img/bg__linkTile.png);
+  background-size: 250px, 480px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.linkTile.--recycle {
+  background-image: url(../assets/img/icon___car.png),
+    url(../assets/img/bg__linkTile.png);
+}
+.linkTile.--bottle {
+  background-image: url(../assets/img/icon__bottle.png),
+    url(../assets/img/bg__linkTile.png);
+}
+.link > .linkTile::after {
+  content: "cloth\A to\A cloth";
+  white-space: pre-line;
+  position: absolute;
+  font-family: BIZ UDPMincho;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+  color: #163e2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/img/icon__cloth--white.png),
+    linear-gradient(#a7cdcb 30%, #cfd936 70%);
+  background-size: 250px, 100% 200%;
+  background-position: center, 0 0;
+  background-repeat: no-repeat;
+  clip-path: path(
+    " M -600 -470 v 465 q 50 50 80 0 t 80 0 q 50 50 80 0 t 80 0 q 50 50 80 0 t 80 0 q 50 50 80 0 t 80 0 q 50 50 80 0 t 80 0 q 50 50 80 0 t 80 0 q 50 50 80 0 t 80 0 v -465 z"
+  );
+  transition: clip-path 2s, background-position 2s, color 0.5s 1s,
+    font-size 0.5s 1s, line-height 0.5s 1s;
+}
+.link > .linkTile:hover::after {
+  font-size: 95px;
+  line-height: 95px;
+  color: #369d88;
+  background-position: center, 0 80%;
+  clip-path: path(
+    "M 0 0 v 465 q 40 40 80 0 t 80 0  q 40 40 80 0 t 80 0  q 40 40 80 0 t 80 0  q 40 40 80 0 t 80 0  q 40 40 80 0 t 80 0  q 40 40 80 0 t 80 0  q 40 40 80 0 t 80 0 v -465 z"
+  );
+}
+.link > .linkTile.--recycle::after {
+  content: "recycle";
+  background-image: url(../assets/img/icon___car--white.png),
+    linear-gradient(#a7cdcb 30%, #cfd936 70%);
+}
+.link > .linkTile.--bottle::after {
+  content: "bottle\A to\A bottle";
+  background-image: url(../assets/img/icon__bottle--white.png),
+    linear-gradient(#a7cdcb 30%, #cfd936 70%);
+}
+@media screen and (max-width: 1400px) {
+  .mainVisualTiles {
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 850px) {
+  .--only-sp {
+    display: block;
+  }
+  .mainVisual {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-.linkButton.--cloth{
-    grid-row: 1 / 3;
-    grid-column: 1 / 2;
-}
-.linkButton.--recicle{
-	grid-row: 1 / 2;
-	grid-column: 2 / 3;
-}
-.linkButton.--bottle{
-	grid-row: 2 / 3;
-	grid-column: 2 / 3;
-}
-.container{
-    display: block;
-    position: relative;
-    width: 300px;
-    height: 300px;
-    background-image: url(../assets/img/icon__cloth.png);
-    background-size: 200px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #42796B;
-    clip-path: path('M89.8785 15h117.8012c12.0969 0 23.2727 6.4696 29.2931 16.9716l58.193 101.4587c6.0204 10.4907 5.9642 23.4075-.146 33.8532l-58.4738 99.9311c-6.054 10.3559-17.1513 16.7132-29.147 16.7132h-113.0613c-11.8273 0-22.7897-6.1888-28.8999-16.3089l-60.5743-100.3354c-6.2562-10.3559-6.4921-23.2615-.6178-33.842l56.1151-101.0656c5.9529-10.7266 17.2523-17.3759 29.5177-17.3759Z');
-}
-.--recicle>.container{
-    background-image: url(../assets/img/icon___car.png);
-}
-.--bottle>.container{
-    background-image: url(../assets/img/icon__bottle.png);
-}
-.container::after{
-    content: "cloth\A to\A cloth";
-    white-space: pre-line;
-    position: absolute;
-    font-family: BIZ UDPMincho;
-    font-size: 60px;
-    font-weight: 700;
-    line-height: 60px;
-    color: #163E2A;
-    text-align: center;
+    height: 639px;
+    padding-top: 52px;
+  }
+  .main-visual-title-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: fade-in-animation 2s forwards;
+  }
+  @keyframes fade-in-animation {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .mainVisualTitle__decoration {
+    width: 154px;
+    height: 159px;
+  }
+  .mainVisualTitle {
+    position: relative;
+    margin: -50px 0 65px;
+    padding: 13px 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    line-height: 29.05px;
+    color: #369d88;
+    text-shadow: 0px 4px 4px #ffffff;
+    background-image: url("../assets/img/bg__title__01-sp.png");
+    background-size: cover;
+  }
+  .mainVisualTiles {
+    display: none;
+  }
+  .mainVisual__links {
+    position: static;
+  }
+  .linkContainer {
+    margin: 0;
+  }
+  .linkContainer > .link,
+  .linkTile {
+    clip-path: path(
+      "m 40 7 h 50.875 c 5.5 0 8.25 2.75 11 6.875 l 24.75 42.625 c 2.75 4.125 2.75 12.375 0 16.5 l -24.75 42.625 c -2.75 5.5 -5.5 6.875 -11 6.875 h -50.875 c -5.5 0 -8.25 -2.75 -11 -6.875 l -25.3 -42.9 c -2.2 -3.85 -2.2 -12.1 0 -16.225 l 24.75 -42.625 c 2.475 -3.025 6.05 -6.875 11.55 -6.875 z"
+    );
+  }
+  .linkContainer:nth-child(1),
+  .linkContainer:nth-child(2) {
+    margin: 0;
+    display: flex;
+  }
+  .link > .linkTile {
+    width: 130px;
+    height: 130px;
+    background-size: 70px, 130px;
+  }
+  .link > .linkTile::after {
+    font-size: 16px;
+    line-height: 15.99px;
+    background-size: 70px, 100% 200%;
+    clip-path: path("m 0 -10 v 0 q 25 25 50 0 t 50 0 q 25 25 50 0 v 0 z");
+    animation: link-tile-animation 2s  forwards;
+  }
+  .--recycle.linkTile::after {
+    animation-delay: .25s;
+  }
+  .--bottle.linkTile::after {
+    animation-delay: .5s;
+  }
+  @keyframes link-tile-animation {
+    to {
+      font-size: 20px;
+      line-height: 19.99px;
+      clip-path: path(
+        "M 0 -10 v 150 q 25 25 50 0 t 50 0 q 25 25 50 0 v -150 z"
+      );
+    }
+  }
+  .--only-pc {
+    display: none;
+  }
+  .link:has(.--cloth, .--bottle) {
+    margin-top: 65px;
+  }
+  .main-visual__banner {
+    display: block;
     width: 100%;
-    height: 100%;
-    background-image: url(../assets/img/icon__cloth--white.png),linear-gradient(#A7CDCB 30%, #CFD936 70%);
-    background-size: 200px,100% 200%;
-    background-position: center,0 0;
-    background-repeat: no-repeat;
-    clip-path: path('m0 -315v315q25 25 50 0t50 0q25 25 50 0t50 0q25 25 50 0t50 0v-315z');
-    transition: clip-path 2s,background-position 2s,color .5s 1s,font-size .5s 1s;
-}
-.container:hover::after{
-    font-size: 75px;
-    color: #369D88;
-    background-position: center,0 80%;
-    clip-path: path('m0 0v315q25 25 50 0t50 0q25 25 50 0t50 0q25 25 50 0t50 0v-315z');
-}
-.--recicle>.container::after{
-    content: "recicle";
-    background-image: url(../assets/img/icon___car--white.png),linear-gradient(#A7CDCB 30%, #CFD936 70%);;
-}
-.--bottle>.container::after{
-    content: "bottle\A to\A bottle";
-    background-image: url(../assets/img/icon__bottle--white.png),linear-gradient(#A7CDCB 30%, #CFD936 70%);;
-}
-.--bottle>.container:hover::after{
-    font-size: 70px;
+    height: 52px;
+    margin-top: 52px;
+    background-image: url(../assets/img/mv_banner.png);
+    background-size: auto 100%;
+    animation: slide-image 5s linear infinite;
+  }
+  @keyframes slide-image {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: calc(-1454px * 52 / 184);
+    }
+  }
 }
